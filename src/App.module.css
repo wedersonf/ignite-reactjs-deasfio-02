@@ -1,0 +1,33 @@
+.wrapper {
+  margin: 4rem auto 0;
+  max-width: 46rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.headerWrapper {
+  height: 1.18rem;
+}
+
+.headerWrapper strong {
+  color: var(--blue);
+}
+
+.headerWrapper:last-child strong {
+  color: var(--purple);
+}
+
+.headerWrapper span {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.125rem 0.5rem;
+  color: var(--gray-200);
+  background: var(--gray-400);
+  border-radius: 999px;
+}
