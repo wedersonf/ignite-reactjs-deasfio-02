@@ -1,10 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { PlusCircle } from "@phosphor-icons/react";
+
 import { Header } from "./components/Header";
 import { Task, TaskType } from "./components/Task";
 import { Input } from "./components/Input";
 
+import ClipboardImage from './assets/clipboard.svg';
+
 import styles from "./App.module.css";
-import { PlusCircle } from "@phosphor-icons/react";
 
 function App() {
   const [tasks, setTasks] = useState<TaskType[]>([
@@ -62,7 +65,7 @@ function App() {
     event.preventDefault();
 
     setTasks(prev => [...prev, {
-      id: prev[tasks.length-1].id + 1,
+      id: tasks.length !== 0 ? prev[tasks.length-1].id + 1 : 1,
       task: newTaskText,
       isConcluded: false,
     }])
@@ -114,16 +117,25 @@ function App() {
           </div>
         </header>
 
-        <section className={styles.list}>
-          {tasks.map(task => (
-            <Task 
-              key={task.id}
-              data={task} 
-              onToggle={handleToggleCheckTask}
-              onDelete={handleDeleteTask}
-            />
-          ))}
-        </section>
+        {tasks.length !== 0 ? (
+          <section className={styles.list}>
+            {tasks.map(task => (
+              <Task 
+                key={task.id}
+                data={task} 
+                onToggle={handleToggleCheckTask}
+                onDelete={handleDeleteTask}
+              />
+            ))}
+          </section>
+        ) : (
+          <section className={styles.listEmpty}>
+            <img src={ClipboardImage} />
+            <strong>Você ainda não tem tarefas cadastradas</strong>
+            <span>Crie tarefas e organize seus itens a fazer</span>
+          </section>
+        )}
+
       </div>
     </>
   )

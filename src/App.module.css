@@ -75,3 +75,25 @@
 .list {
   margin: 1.5rem 0;
 }
+
+.listEmpty {
+  margin: 1.5rem 0;
+  padding: 4rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 1px solid var(--gray-400);
+}
+
+.listEmpty > strong {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.listEmpty > strong {
+  font-size: 1rem;
+  line-height: 1.4;
+}
