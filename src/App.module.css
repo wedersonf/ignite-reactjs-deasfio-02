@@ -1,6 +1,44 @@
 .wrapper {
-  margin: 4rem auto 0;
+  margin: 0 auto;
   max-width: 46rem;
+}
+
+.inputWrapper {
+  margin-top: -1.687rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputWrapper button {
+  background: var(--blue-dark);
+  border-radius: 0.5rem;
+  border: 0;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 5.625rem;
+
+  padding: 1rem;
+  margin-left: 0.5rem;
+
+  color: var(--gray-100);
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  
+  transition: all .2s;
+}
+
+.inputWrapper button:hover {
+  background: var(--blue);
+}
+
+.inputWrapper button > svg {
+  margin-left: 0.5rem;
 }
 
 .header {
@@ -8,6 +46,7 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  margin: 4rem 0;
 }
 
 .headerWrapper {

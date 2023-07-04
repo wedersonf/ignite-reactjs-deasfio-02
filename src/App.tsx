@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Header } from "./components/Header";
 import { Task, TaskType } from "./components/Task";
+import { Input } from "./components/Input";
 
 import styles from "./App.module.css";
+import { PlusCircle } from "@phosphor-icons/react";
 
 function App() {
   const [tasks, setTasks] = useState<TaskType[]>([
@@ -32,6 +34,7 @@ function App() {
       isConcluded: true
     }
   ]);
+  const [newTaskText, setNewTaskText] = useState('');
 
   function handleToggleCheckTask(taskId: number) {
     const newTasks = tasks.map(t => {
@@ -51,6 +54,22 @@ function App() {
     setTasks(newTasks);
   }
 
+  function handleNewTaskTextChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskText(event.target.value)
+  }
+
+  function handleAddNewTask(event: FormEvent) {
+    event.preventDefault();
+
+    setTasks(prev => [...prev, {
+      id: prev[tasks.length-1].id + 1,
+      task: newTaskText,
+      isConcluded: false,
+    }])
+
+    setNewTaskText('');
+  }
+
   function countConcludedTasks() {
     let count = 0;
 
@@ -68,6 +87,21 @@ function App() {
       <Header />
 
       <div className={styles.wrapper}>
+        <form onSubmit={handleAddNewTask} className={styles.inputWrapper}>
+          <Input
+            name="task"
+            placeholder="Adicione uma nova tarefa"
+            value={newTaskText}
+            onChange={handleNewTaskTextChange}
+            required
+          />
+
+          <button>
+            Criar
+            <PlusCircle size={16} weight="bold" />
+          </button>
+        </form>
+
         <header className={styles.header}>
           <div className={styles.headerWrapper}>
             <strong>Tarefas criadas</strong>
